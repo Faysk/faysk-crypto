@@ -1,0 +1,16 @@
+.chart-container {
+    width: 100%;
+    max-width: 800px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: var(--table-header-bg);
+    border-radius: var(--border-radius);
+    box-shadow: var(--box-shadow);
+  }
+  
+  canvas {
+    display: block;
+    width: 100%;
+    height: auto;
+  }
+  

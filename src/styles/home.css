@@ -1,46 +1,66 @@
 .home {
-    text-align: center;
-    padding: 20px;
-    margin: 0 auto;
-    max-width: 1200px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
-  
-  .intro {
-    margin-bottom: 40px;
-    background-color: var(--table-row-hover-bg);
-    padding: 20px;
-    border-radius: var(--border-radius);
-    box-shadow: var(--box-shadow);
-  }
-  
-  .intro-container {
-    max-width: 800px;
-    margin: 0 auto;
-  }
-  
-  .intro-title {
-    font-size: 2.5rem;
-    font-weight: bold;
-    color: var(--primary-color);
-    margin-bottom: 10px;
-  }
-  
-  .intro-description {
-    font-size: 1.2rem;
-    color: var(--text-color);
-    margin-bottom: 10px;
-  }
-  
-  .crypto-prices {
-    margin-bottom: 40px;
-    width: 100%;
-  }
-  
-  .crypto-charts {
-    margin-bottom: 40px;
-    width: 100%;
-  }
-  
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+
+/* Introdução */
+.intro {
+  text-align: center;
+  background-color: var(--table-header-bg);
+  padding: 40px 20px;
+  border-radius: var(--border-radius);
+  box-shadow: var(--box-shadow);
+}
+
+.intro-container {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.intro-title {
+  font-size: 2.5rem;
+  color: var(--primary-color);
+  margin-bottom: 15px;
+}
+
+.intro-description {
+  font-size: 1.2rem;
+  color: var(--text-color);
+}
+
+/* Preços de Criptomoedas */
+.crypto-prices {
+  padding: 20px 0;
+}
+
+.section-title {
+  font-size: 1.8rem;
+  font-weight: bold;
+  color: var(--primary-color);
+  margin-bottom: 20px;
+}
+
+/* Gráficos de Criptomoedas */
+.crypto-charts {
+  padding: 20px 0;
+}
+
+.chart-container {
+  width: 100%;
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: var(--table-header-bg);
+  border-radius: var(--border-radius);
+  box-shadow: var(--box-shadow);
+  text-align: center;
+}
+
+.chart-container canvas {
+  width: 100%;
+  height: auto;
+}

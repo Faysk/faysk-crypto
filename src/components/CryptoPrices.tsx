@@ -1,83 +1,133 @@
 'use client';
 
 import { useEffect, useState } from 'react';
-import { fetchCryptoPrices } from '@utils/api';
+import { fetchTopCryptos } from '@utils/api';
 
 import '@styles/table.css';
 
-type CryptoPrices = {
-  [key: string]: {
-    usd: number;
-    brl: number;
-  };
+type Crypto = {
+  id: string;
+  name: string;
+  symbol: string;
+  current_price?: number;
+  market_cap?: number;
+  total_volume?: number;
+  price_change_percentage_1h_in_currency?: number;
+  price_change_percentage_24h?: number;
+  price_change_percentage_7d_in_currency?: number;
+  sparkline_in_7d?: { price: number[] };
 };
 
 export default function CryptoPrices() {
-  const [prices, setPrices] = useState<CryptoPrices | null>(null);
+  const [cryptos, setCryptos] = useState<Crypto[]>([]);
   const [error, setError] = useState<string | null>(null);
+  const [loading, setLoading] = useState<boolean>(true);
 
   useEffect(() => {
-    const getPrices = async () => {
+    const getCryptos = async () => {
       try {
-        // Verifica se há dados no localStorage
-        const cachedData = localStorage.getItem('cryptoPrices');
-        const cachedTimestamp = localStorage.getItem('cryptoPricesTimestamp');
-
-        const now = Date.now();
-
-        // Usa o cache se ele for válido (menos de 30 segundos)
-        if (cachedData && cachedTimestamp && now - parseInt(cachedTimestamp) < 30000) {
-          setPrices(JSON.parse(cachedData));
-          return;
-        }
-
-        // Busca novos dados da API
-        const data = await fetchCryptoPrices();
-
-        // Salva os dados e o timestamp no localStorage
-        localStorage.setItem('cryptoPrices', JSON.stringify(data));
-        localStorage.setItem('cryptoPricesTimestamp', now.toString());
-
-        setPrices(data);
-        setError(null); // Limpa erros anteriores
+        const data = await fetchTopCryptos(10, 'brl');
+        setCryptos(data);
+        setError(null);
       } catch (err) {
-        setError('Failed to fetch prices. Please try again later.');
+        console.error(err);
+        setError('Falha ao obter dados das criptomoedas.');
+      } finally {
+        setLoading(false);
       }
     };
 
-    getPrices();
-
-    // Atualiza automaticamente a cada 30 segundos
-    const interval = setInterval(() => {
-      getPrices();
-    }, 30000);
-
-    return () => clearInterval(interval); // Limpa o intervalo ao desmontar
+    getCryptos();
   }, []);
 
-  if (error) {
-    return <p style={{ color: 'red' }}>{error}</p>;
-  }
-
-  if (!prices) {
-    return <p>Loading...</p>;
-  }
+  if (loading) return <p className="loading-text">Carregando...</p>;
+  if (error) return <p className="error-text">{error}</p>;
 
   return (
-    <table style={{ width: '100%', borderCollapse: 'collapse', marginTop: '20px' }}>
+    <table className="crypto-table" aria-live="polite">
       <thead>
         <tr>
-          <th style={{ borderBottom: '1px solid #ddd', padding: '10px' }}>Cryptocurrency</th>
-          <th style={{ borderBottom: '1px solid #ddd', padding: '10px' }}>Price (USD)</th>
-          <th style={{ borderBottom: '1px solid #ddd', padding: '10px' }}>Price (BRL)</th>
+          <th>#</th>
+          <th>Nome</th>
+          <th>Preço</th>
+          <th>1h %</th>
+          <th>24h %</th>
+          <th>7d %</th>
+          <th>Cap. de Mercado</th>
+          <th>Volume (24h)</th>
+          <th>Últimos 7 Dias</th>
         </tr>
       </thead>
       <tbody>
-        {Object.entries(prices).map(([crypto, price]) => (
-          <tr key={crypto}>
-            <td style={{ padding: '10px', textAlign: 'center' }}>{crypto}</td>
-            <td style={{ padding: '10px', textAlign: 'center' }}>${price.usd.toFixed(2)}</td>
-            <td style={{ padding: '10px', textAlign: 'center' }}>R$ {price.brl.toFixed(2)}</td>
+        {cryptos.map((crypto, index) => (
+          <tr key={crypto.id}>
+            <td>{index + 1}</td>
+            <td>
+              <div className="crypto-name">
+                <img
+                  src={`https://assets.coingecko.com/coins/images/${crypto.id}/thumb.png`}
+                  alt={crypto.name}
+                  className="crypto-icon"
+                  loading="lazy"
+                />
+                {crypto.name} ({crypto.symbol?.toUpperCase()})
+              </div>
+            </td>
+            <td>{crypto.current_price ? `R$ ${crypto.current_price.toLocaleString('pt-BR')}` : 'N/A'}</td>
+            <td
+              className={
+                crypto.price_change_percentage_1h_in_currency !== undefined
+                  ? crypto.price_change_percentage_1h_in_currency > 0
+                    ? 'positive'
+                    : 'negative'
+                  : ''
+              }
+            >
+              {crypto.price_change_percentage_1h_in_currency !== undefined
+                ? `${crypto.price_change_percentage_1h_in_currency.toFixed(2)}%`
+                : 'N/A'}
+            </td>
+            <td
+              className={
+                crypto.price_change_percentage_24h !== undefined
+                  ? crypto.price_change_percentage_24h > 0
+                    ? 'positive'
+                    : 'negative'
+                  : ''
+              }
+            >
+              {crypto.price_change_percentage_24h !== undefined
+                ? `${crypto.price_change_percentage_24h.toFixed(2)}%`
+                : 'N/A'}
+            </td>
+            <td
+              className={
+                crypto.price_change_percentage_7d_in_currency !== undefined
+                  ? crypto.price_change_percentage_7d_in_currency > 0
+                    ? 'positive'
+                    : 'negative'
+                  : ''
+              }
+            >
+              {crypto.price_change_percentage_7d_in_currency !== undefined
+                ? `${crypto.price_change_percentage_7d_in_currency.toFixed(2)}%`
+                : 'N/A'}
+            </td>
+            <td>{crypto.market_cap ? `R$ ${crypto.market_cap.toLocaleString('pt-BR')}` : 'N/A'}</td>
+            <td>{crypto.total_volume ? `R$ ${crypto.total_volume.toLocaleString('pt-BR')}` : 'N/A'}</td>
+            <td>
+              <div className="sparkline">
+                {crypto.sparkline_in_7d?.price?.map((price, idx) => (
+                  <div
+                    key={idx}
+                    className="sparkline-bar"
+                    style={{
+                      height: `${Math.max(price / 100, 1)}px`,
+                    }}
+                  />
+                )) || <span>N/A</span>}
+              </div>
+            </td>
           </tr>
         ))}
       </tbody>

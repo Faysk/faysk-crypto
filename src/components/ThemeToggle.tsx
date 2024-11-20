@@ -33,20 +33,18 @@ export default function ThemeToggle() {
     // Remove a classe após o efeito
     setTimeout(() => {
       htmlElement.classList.remove('transitioning');
-    }, 500); // 500ms corresponde ao tempo de transição
+    }, 400); // Sincronizado com o tempo de transição no CSS
   };
-
 
   return (
     <button
       onClick={toggleTheme}
       className="theme-toggle"
       aria-label={`Ativar modo ${theme === 'light' ? 'escuro' : 'claro'}`}
+      aria-live="polite"
     >
       <span className="theme-icon">{theme === 'light' ? '🌙' : '☀️'}</span>
-      <span className="theme-text">
-        {theme === 'light' ? 'Modo Escuro' : 'Modo Claro'}
-      </span>
+      <span className="theme-text">{theme === 'light' ? 'Modo Escuro' : 'Modo Claro'}</span>
     </button>
   );
 }
