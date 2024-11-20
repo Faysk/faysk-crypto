@@ -1,0 +1,35 @@
+PS D:\faysk-crypto\
+│   .gitignore
+│   estrutura.ps1
+│   estrutura.txt
+│   limpaDefault.ps1
+│   next-env.d.ts
+│   next.config.ts
+│   package-lock.json
+│   package.json
+│   tsconfig.json
+├───public
+    │   favicon.ico
+    │   logo.svg
+
+├───src
+    ├───app
+        │   layout.tsx
+        │   page.tsx
+    
+    ├───assets
+    
+    ├───components
+        │   CryptoPrices.tsx
+        │   Footer.tsx
+        │   Header.tsx
+        │   ThemeToggle.tsx
+    
+    ├───styles
+        │   colors.css
+        │   globals.css
+    
+    ├───utils
+        │   api.ts
+    
+

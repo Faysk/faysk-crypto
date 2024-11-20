@@ -1,7 +1,82 @@
+/* Tema Claro */
 :root {
-    --primary: #007bff;
-    --secondary: #6c757d;
-    --background: #f8f9fa;
-    --text: #212529;
+    /* Fundo e texto */
+    --background-color: #ffffff;
+    --text-color: #333333;
+  
+    /* Cores principais */
+    --primary-color: #007bff;
+    --secondary-color: #6c757d;
+    --accent-color: #ff4081;
+  
+    /* Tabela */
+    --table-border: #dddddd;
+    --table-header-bg: #f9f9f9;
+    --table-row-hover-bg: #f1f1f1;
+  
+    /* Links */
+    --link-color: #007bff;
+    --link-hover-color: #0056b3;
+  
+    /* Botões */
+    --button-bg: #007bff;
+    --button-hover-bg: #0056b3;
+    --button-text-color: #ffffff;
+  
+    /* Inputs */
+    --input-bg: #f9f9f9;
+    --input-border: #cccccc;
+    --input-focus-border: #007bff;
+    --input-text-color: #333333;
+  
+    /* Bordas e sombras */
+    --border-radius: 6px;
+    --box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 8px;
+    --box-shadow-hover: rgba(0, 0, 0, 0.15) 0px 6px 12px;
+  
+    /* Transições */
+    --transition-duration: 0.3s;
+    --transition-timing: ease-in-out;
+  }
+  
+  /* Tema Escuro */
+  [data-theme="dark"] {
+    /* Fundo e texto */
+    --background-color: #121212;
+    --text-color: #e0e0e0;
+  
+    /* Cores principais */
+    --primary-color: #1e90ff;
+    --secondary-color: #b0b0b0;
+    --accent-color: #ff79c6;
+  
+    /* Tabela */
+    --table-border: #444444;
+    --table-header-bg: #1e1e1e;
+    --table-row-hover-bg: #222222;
+  
+    /* Links */
+    --link-color: #8ab4f8;
+    --link-hover-color: #5a8fe2;
+  
+    /* Botões */
+    --button-bg: #1e90ff;
+    --button-hover-bg: #0056b3;
+    --button-text-color: #ffffff;
+  
+    /* Inputs */
+    --input-bg: #1e1e1e;
+    --input-border: #555555;
+    --input-focus-border: #1e90ff;
+    --input-text-color: #e0e0e0;
+  
+    /* Bordas e sombras */
+    --border-radius: 6px;
+    --box-shadow: rgba(0, 0, 0, 0.5) 0px 4px 8px;
+    --box-shadow-hover: rgba(0, 0, 0, 0.7) 0px 6px 12px;
+  
+    /* Transições */
+    --transition-duration: 0.3s;
+    --transition-timing: ease-in-out;
   }
   

@@ -1,0 +1,46 @@
+.home {
+    text-align: center;
+    padding: 20px;
+    margin: 0 auto;
+    max-width: 1200px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .intro {
+    margin-bottom: 40px;
+    background-color: var(--table-row-hover-bg);
+    padding: 20px;
+    border-radius: var(--border-radius);
+    box-shadow: var(--box-shadow);
+  }
+  
+  .intro-container {
+    max-width: 800px;
+    margin: 0 auto;
+  }
+  
+  .intro-title {
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: var(--primary-color);
+    margin-bottom: 10px;
+  }
+  
+  .intro-description {
+    font-size: 1.2rem;
+    color: var(--text-color);
+    margin-bottom: 10px;
+  }
+  
+  .crypto-prices {
+    margin-bottom: 40px;
+    width: 100%;
+  }
+  
+  .crypto-charts {
+    margin-bottom: 40px;
+    width: 100%;
+  }
+  
