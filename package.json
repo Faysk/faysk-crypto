@@ -1,26 +1,22 @@
 {
   "name": "faysk-crypto",
-  "version": "0.1.0",
-  "private": true,
+  "version": "1.0.0",
+  "description": "A scalable cryptocurrency tracker project",
+  "main": "src/app/layout.tsx",
   "scripts": {
-    "dev": "next dev --turbopack",
+    "dev": "next dev",
     "build": "next build",
     "start": "next start",
     "lint": "next lint"
   },
   "dependencies": {
-    "next": "15.0.3",
-    "react": "^18.3.1",
-    "react-dom": "^18.3.1"
+    "next": "latest",
+    "react": "latest",
+    "react-dom": "latest"
   },
   "devDependencies": {
-    "@types/node": "^22.9.1",
-    "@types/react": "^18",
-    "@types/react-dom": "^18",
-    "eslint": "^9.15.0",
-    "eslint-config-next": "15.0.3",
-    "postcss": "^8",
-    "tailwindcss": "^3.4.1",
-    "typescript": "^5"
+    "typescript": "latest",
+    "@types/react": "latest",
+    "@types/node": "latest"
   }
 }
