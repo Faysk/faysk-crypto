@@ -82,7 +82,7 @@ export async function fetchTopCryptos(perPage = 10, currency = 'brl'): Promise<a
  * @returns {Promise<any>} Detalhes completos da criptomoeda.
  */
 export async function fetchCryptoDetails(id: string, currency = 'brl'): Promise<any> {
-  const endpoint = `/coins/${id}?localization=false&tickers=false&market_data=true&community_data=true&developer_data=true&sparkline=true`;
+  const endpoint = `/coins/${id}?localization=false&tickers=false&market_data=true&community_data=true&developer_data=true&sparkline=true&vs_currency=${currency}`;
   const details = await fetchData(endpoint, 'Não foi possível buscar os detalhes da criptomoeda.');
 
   return {
@@ -100,6 +100,7 @@ export async function fetchCryptoDetails(id: string, currency = 'brl'): Promise<
     last_updated: details.last_updated || 'N/A',
   };
 }
+
 
 /**
  * Busca dados históricos de uma criptomoeda.

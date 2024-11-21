@@ -20,14 +20,24 @@ PS D:\faysk-crypto\
     ├───assets
     
     ├───components
+        │   Chart.tsx
+        │   CryptoDetails.tsx
         │   CryptoPrices.tsx
         │   Footer.tsx
         │   Header.tsx
         │   ThemeToggle.tsx
     
     ├───styles
+        │   chart.css
         │   colors.css
+        │   cryptoDetails.css
+        │   cryptoPrices.css
+        │   footer.css
         │   globals.css
+        │   header.css
+        │   home.css
+        │   main.css
+        │   themeToggle.css
     
     ├───utils
         │   api.ts

@@ -16,6 +16,7 @@
   padding: 16px 12px;
   border: 1px solid var(--table-border);
   font-size: 1rem;
+  white-space: nowrap; /* Evita quebra de texto */
 }
 
 .crypto-table th {
@@ -31,11 +32,12 @@
 
 .crypto-table tbody tr {
   transition: background-color 0.3s ease, transform 0.2s ease;
+  cursor: pointer;
 }
 
 .crypto-table tbody tr:hover {
   background-color: var(--table-row-hover-bg);
-  transform: scale(1.02);
+  transform: scale(1.01);
 }
 
 .crypto-table .crypto-name {
@@ -61,18 +63,18 @@
 .crypto-table .positive {
   color: var(--positive-color);
   font-weight: bold;
-  font-size: 1rem;
 }
 
 .crypto-table .negative {
   color: var(--negative-color);
   font-weight: bold;
-  font-size: 1rem;
 }
 
 .crypto-table tbody td {
   font-size: 0.95rem;
   color: var(--text-color);
+  text-align: center;
+  vertical-align: middle;
 }
 
 .crypto-table .sparkline {
@@ -123,6 +125,7 @@
   .crypto-table th,
   .crypto-table td {
     padding: 10px;
+    white-space: normal; /* Permite quebra de texto */
   }
 
   .crypto-table .crypto-icon {
@@ -160,5 +163,25 @@
 
   .crypto-table .sparkline div {
     width: 2.5px;
+  }
+
+  .crypto-table tbody tr {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 10px;
+    padding: 10px 0;
+  }
+
+  .crypto-table tbody tr:hover {
+    background-color: var(--table-row-hover-bg);
+    transform: none; /* Remove escala em dispositivos móveis */
+  }
+
+  .crypto-table th,
+  .crypto-table td {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 8px;
   }
 }

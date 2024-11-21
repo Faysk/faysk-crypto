@@ -1,62 +1,40 @@
 .crypto-details {
-    background-color: var(--background-color);
-    color: var(--text-color);
-    border-radius: var(--border-radius);
-    box-shadow: var(--box-shadow);
-    padding: 20px;
-    max-width: 800px;
-    margin: 20px auto;
-  }
-  
-  .crypto-header {
-    display: flex;
-    align-items: center;
-    gap: 15px;
-    margin-bottom: 20px;
-  }
-  
-  .crypto-image {
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
-    box-shadow: var(--box-shadow);
-  }
-  
-  .crypto-name {
-    font-size: 1.8rem;
-    font-weight: bold;
-    color: var(--primary-color);
-  }
-  
-  .crypto-stats {
-    margin: 20px 0;
-    line-height: 1.8;
-  }
-  
-  .crypto-stats p {
-    font-size: 1rem;
-    margin: 5px 0;
-  }
-  
-  .crypto-chart {
-    margin-top: 30px;
-    text-align: center;
-    padding: 20px;
-    background-color: var(--table-header-bg);
-    border-radius: var(--border-radius);
-    box-shadow: var(--box-shadow);
-    color: var(--text-color);
-  }
-  
-  .loading-text {
-    text-align: center;
-    font-size: 1.2rem;
-    color: var(--secondary-color);
-  }
-  
-  .error-text {
-    text-align: center;
-    font-size: 1.2rem;
-    color: red;
-  }
-  
+  padding: 20px;
+  background-color: var(--background-color);
+  color: var(--text-color);
+  border-radius: var(--border-radius);
+  box-shadow: var(--box-shadow);
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.crypto-header {
+  text-align: center;
+}
+
+.crypto-image {
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
+  margin-bottom: 10px;
+}
+
+.crypto-name {
+  font-size: 1.8rem;
+  font-weight: bold;
+}
+
+.crypto-stats,
+.crypto-additional {
+  margin: 20px 0;
+}
+
+.crypto-stats p,
+.crypto-additional p {
+  margin: 5px 0;
+}
+
+.crypto-chart {
+  margin-top: 20px;
+  text-align: center;
+}

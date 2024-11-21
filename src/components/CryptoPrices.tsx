@@ -1,9 +1,10 @@
 'use client';
 
 import { useEffect, useState } from 'react';
+import { useRouter } from 'next/navigation'; // Importa o roteador do Next.js
 import { fetchTopCryptos } from '@utils/api';
 
-import '@styles/table.css';
+import '@styles/cryptoPrices.css';
 
 type Crypto = {
   id: string;
@@ -11,15 +12,8 @@ type Crypto = {
   symbol: string;
   image: string;
   current_price?: number;
-  market_cap?: number;
-  market_cap_rank?: number;
-  fully_diluted_valuation?: number;
-  total_volume?: number;
   high_24h?: number;
   low_24h?: number;
-  circulating_supply?: number;
-  total_supply?: number;
-  max_supply?: number;
   price_change_percentage_1h_in_currency?: number;
   price_change_percentage_24h?: number;
   price_change_percentage_7d_in_currency?: number;
@@ -32,6 +26,7 @@ export default function CryptoPrices() {
   const [cryptos, setCryptos] = useState<Crypto[]>([]);
   const [error, setError] = useState<string | null>(null);
   const [loading, setLoading] = useState<boolean>(true);
+  const router = useRouter(); // Instancia o roteador do Next.js
 
   useEffect(() => {
     const getCryptos = async () => {
@@ -54,6 +49,10 @@ export default function CryptoPrices() {
   const renderValue = (value: number | undefined, prefix: string = '', suffix: string = '') =>
     value !== undefined ? `${prefix}${value.toLocaleString('pt-BR')}${suffix}` : 'N/A';
 
+  const handleRowClick = (id: string) => {
+    router.push(`/crypto/${id}`); // Redireciona para a página de detalhes da cripto
+  };
+
   if (loading) return <p className="loading-text">Carregando...</p>;
   if (error) return <p className="error-text">{error}</p>;
 
@@ -65,24 +64,18 @@ export default function CryptoPrices() {
             <th>#</th>
             <th>Nome</th>
             <th>Preço</th>
-            <th>Cap. Rank</th>
             <th>Alta (24h)</th>
             <th>Baixa (24h)</th>
             <th>% 1h</th>
             <th>% 24h</th>
             <th>% 7d</th>
-            <th>Cap. de Mercado</th>
-            <th>Valor Total</th>
-            <th>Volume (24h)</th>
-            <th>Suprimento Circulante</th>
-            <th>Suprimento Máximo</th>
             <th>ATH</th>
             <th>Últimos 7 Dias</th>
           </tr>
         </thead>
         <tbody>
           {cryptos.map((crypto, index) => (
-            <tr key={crypto.id}>
+            <tr key={crypto.id} onClick={() => handleRowClick(crypto.id)} className="clickable-row">
               <td>{index + 1}</td>
               <td>
                 <div className="crypto-name">
@@ -96,7 +89,6 @@ export default function CryptoPrices() {
                 </div>
               </td>
               <td>{renderValue(crypto.current_price, 'R$ ')}</td>
-              <td>{crypto.market_cap_rank || 'N/A'}</td>
               <td>{renderValue(crypto.high_24h, 'R$ ')}</td>
               <td>{renderValue(crypto.low_24h, 'R$ ')}</td>
               <td
@@ -132,14 +124,11 @@ export default function CryptoPrices() {
               >
                 {renderValue(crypto.price_change_percentage_7d_in_currency, '', '%')}
               </td>
-              <td>{renderValue(crypto.market_cap, 'R$ ')}</td>
-              <td>{renderValue(crypto.fully_diluted_valuation, 'R$ ')}</td>
-              <td>{renderValue(crypto.total_volume, 'R$ ')}</td>
-              <td>{renderValue(crypto.circulating_supply)}</td>
-              <td>{renderValue(crypto.max_supply)}</td>
               <td>
                 {crypto.ath
-                  ? `R$ ${crypto.ath.toLocaleString('pt-BR')} em ${new Date(crypto.ath_date!).toLocaleDateString('pt-BR')}`
+                  ? `R$ ${crypto.ath.toLocaleString('pt-BR')} em ${new Date(
+                      crypto.ath_date!
+                    ).toLocaleDateString('pt-BR')}`
                   : 'N/A'}
               </td>
               <td>
