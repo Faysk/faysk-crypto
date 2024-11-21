@@ -7,7 +7,7 @@
 
 /* Transição suave para o HTML e elementos */
 html {
-  transition: background-color 0.5s ease, color 0.5s ease;
+  transition: background-color 0.4s ease, color 0.4s ease;
 }
 
 img,
@@ -18,22 +18,19 @@ input {
   transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease, transform 0.2s ease;
 }
 
-Efeito de transição para mudanças de tema
-.theme-transition {
-  transition: opacity 0.5s ease;
-}
-
-html.transitioning {
-  opacity: 0.7;
+/* Efeito de transição para mudanças de tema */
+html.theme-transition {
+  opacity: 0.9;
   pointer-events: none; /* Evita interação durante a transição */
+  transition: opacity 0.4s ease, transform 0.3s ease;
 }
 
 /* Corpo da página */
 body {
-  font-family: 'Arial', sans-serif;
+  font-family: 'Inter', sans-serif; /* Fonte mais moderna */
   background-color: var(--background-color);
   color: var(--text-color);
-  line-height: 1.6;
+  line-height: 1.7;
   display: flex;
   flex-direction: column;
   min-height: 100vh;
@@ -59,27 +56,29 @@ button {
   background-color: var(--button-bg);
   color: var(--button-text-color);
   border: none;
-  border-radius: 8px;
-  padding: 10px 15px;
+  border-radius: var(--border-radius);
+  padding: 10px 20px;
   cursor: pointer;
-  transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.2s ease;
+  box-shadow: var(--box-shadow);
+  transition: background-color var(--transition-duration), transform 0.2s ease, box-shadow var(--transition-duration);
 }
 
 button:hover {
   background-color: var(--button-hover-bg);
   transform: scale(1.05);
+  box-shadow: var(--box-shadow-hover);
 }
 
 button:active {
-  transform: scale(0.98);
-  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.2);
+  transform: scale(0.95);
+  box-shadow: inset 0 3px 6px rgba(0, 0, 0, 0.2);
 }
 
 /* Links */
 a {
   color: var(--link-color);
   text-decoration: none;
-  transition: color 0.3s ease;
+  transition: color var(--transition-duration);
 }
 
 a:hover {
@@ -92,12 +91,12 @@ input {
   border: 1px solid var(--input-border);
   color: var(--input-text-color);
   padding: 10px;
-  border-radius: 8px;
+  border-radius: var(--border-radius);
   width: 100%;
   max-width: 400px;
   margin: 10px 0;
   display: block;
-  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  transition: border-color var(--transition-duration), box-shadow var(--transition-duration);
 }
 
 input:focus {
@@ -106,22 +105,111 @@ input:focus {
   box-shadow: 0 0 6px var(--input-focus-border);
 }
 
+/* Tabelas */
+table {
+  width: 100%;
+  max-width: 1200px;
+  border-collapse: collapse;
+  margin: 20px 0;
+  background-color: var(--table-header-bg);
+  color: var(--text-color);
+  box-shadow: var(--box-shadow);
+  border-radius: var(--border-radius);
+  overflow: hidden;
+}
+
+table th,
+table td {
+  text-align: center;
+  padding: 12px;
+  border: 1px solid var(--table-border);
+  font-size: 1rem;
+}
+
+table th {
+  background-color: var(--table-header-bg);
+  text-transform: uppercase;
+  font-weight: bold;
+  color: var(--table-header-text);
+}
+
+table tbody tr:hover {
+  background-color: var(--table-row-hover-bg);
+  transition: background-color var(--transition-duration);
+}
+
+.positive {
+  color: var(--positive-color);
+  font-weight: bold;
+}
+
+.negative {
+  color: var(--negative-color);
+  font-weight: bold;
+}
+
 /* Responsividade */
-@media (max-width: 768px) {
+@media (max-width: 1024px) {
   body {
-    font-size: 0.9rem;
+    font-size: 0.95rem;
   }
 
   button {
-    font-size: 0.9rem;
-    padding: 8px 12px;
+    font-size: 0.95rem;
+    padding: 8px 16px;
   }
 
   input {
-    max-width: 100%;
+    max-width: 90%;
+  }
+
+  table {
+    font-size: 0.9rem;
+  }
+
+  table th,
+  table td {
+    padding: 10px;
+  }
+}
+
+@media (max-width: 768px) {
+  body {
+    font-size: 0.85rem;
   }
 
   main {
     padding: 15px;
+  }
+
+  table th,
+  table td {
+    padding: 8px;
+    font-size: 0.85rem;
+  }
+
+  button {
+    padding: 6px 12px;
+    font-size: 0.85rem;
+  }
+}
+
+@media (max-width: 480px) {
+  body {
+    font-size: 0.8rem;
+  }
+
+  table {
+    font-size: 0.8rem;
+  }
+
+  table th,
+  table td {
+    padding: 6px;
+  }
+
+  button {
+    padding: 5px 10px;
+    font-size: 0.8rem;
   }
 }

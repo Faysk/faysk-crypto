@@ -1,82 +1,99 @@
 /* Tema Claro */
 :root {
-    /* Fundo e texto */
-    --background-color: #ffffff;
-    --text-color: #333333;
-  
-    /* Cores principais */
-    --primary-color: #007bff;
-    --secondary-color: #6c757d;
-    --accent-color: #ff4081;
-  
-    /* Tabela */
-    --table-border: #dddddd;
-    --table-header-bg: #f9f9f9;
-    --table-row-hover-bg: #f1f1f1;
-  
-    /* Links */
-    --link-color: #007bff;
-    --link-hover-color: #0056b3;
-  
-    /* Botões */
-    --button-bg: #007bff;
-    --button-hover-bg: #0056b3;
-    --button-text-color: #ffffff;
-  
-    /* Inputs */
-    --input-bg: #f9f9f9;
-    --input-border: #cccccc;
-    --input-focus-border: #007bff;
-    --input-text-color: #333333;
-  
-    /* Bordas e sombras */
-    --border-radius: 6px;
-    --box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 8px;
-    --box-shadow-hover: rgba(0, 0, 0, 0.15) 0px 6px 12px;
-  
-    /* Transições */
-    --transition-duration: 0.3s;
-    --transition-timing: ease-in-out;
-  }
-  
-  /* Tema Escuro */
-  [data-theme="dark"] {
-    /* Fundo e texto */
-    --background-color: #121212;
-    --text-color: #e0e0e0;
-  
-    /* Cores principais */
-    --primary-color: #1e90ff;
-    --secondary-color: #b0b0b0;
-    --accent-color: #ff79c6;
-  
-    /* Tabela */
-    --table-border: #444444;
-    --table-header-bg: #1e1e1e;
-    --table-row-hover-bg: #222222;
-  
-    /* Links */
-    --link-color: #8ab4f8;
-    --link-hover-color: #5a8fe2;
-  
-    /* Botões */
-    --button-bg: #1e90ff;
-    --button-hover-bg: #0056b3;
-    --button-text-color: #ffffff;
-  
-    /* Inputs */
-    --input-bg: #1e1e1e;
-    --input-border: #555555;
-    --input-focus-border: #1e90ff;
-    --input-text-color: #e0e0e0;
-  
-    /* Bordas e sombras */
-    --border-radius: 6px;
-    --box-shadow: rgba(0, 0, 0, 0.5) 0px 4px 8px;
-    --box-shadow-hover: rgba(0, 0, 0, 0.7) 0px 6px 12px;
-  
-    /* Transições */
-    --transition-duration: 0.3s;
-    --transition-timing: ease-in-out;
-  }
-  
+  /* Fundo e texto */
+  --background-color: #f3f8f4; /* Verde claro mais equilibrado */
+  --text-color: #204429; /* Verde escuro para contraste mais acentuado */
+
+  /* Cores principais */
+  --primary-color: #43a047; /* Verde vibrante */
+  --secondary-color: #76c893; /* Verde suave */
+  --accent-color: #2e7d32; /* Verde intermediário */
+
+  /* Gradientes */
+  --gradient-primary: linear-gradient(135deg, #43a047, #388e3c);
+  --gradient-accent: linear-gradient(135deg, #76c893, #2e7d32);
+
+  /* Valores Positivos e Negativos */
+  --positive-color: #43a047; /* Verde para valores positivos */
+  --negative-color: #e53935; /* Vermelho para valores negativos */
+
+  /* Tabela */
+  --table-border: #d1e9d2;
+  --table-header-bg: #edf7ed;
+  --table-row-hover-bg: #dff3df;
+  --table-header-text: #2b5932;
+
+  /* Links */
+  --link-color: #2e7d32;
+  --link-hover-color: #1b5e20;
+
+  /* Botões */
+  --button-bg: var(--gradient-primary);
+  --button-hover-bg: #2e7d32;
+  --button-text-color: #ffffff;
+
+  /* Inputs */
+  --input-bg: #ffffff;
+  --input-border: #a9d7aa;
+  --input-focus-border: #43a047;
+  --input-text-color: #204429;
+
+  /* Bordas e sombras */
+  --border-radius: 8px;
+  --box-shadow: rgba(0, 100, 0, 0.1) 0px 4px 8px;
+  --box-shadow-hover: rgba(0, 100, 0, 0.2) 0px 6px 12px;
+
+  /* Transições */
+  --transition-duration: 0.3s;
+  --transition-timing: ease-in-out;
+}
+
+/* Tema Escuro */
+[data-theme="dark"] {
+  /* Fundo e texto */
+  --background-color: #122a18; /* Verde muito escuro */
+  --text-color: #d7f3df; /* Verde claro para contraste */
+
+  /* Cores principais */
+  --primary-color: #66bb6a;
+  --secondary-color: #388e3c;
+  --accent-color: #2a6b2f;
+
+  /* Gradientes */
+  --gradient-primary: linear-gradient(135deg, #66bb6a, #2e7d32);
+  --gradient-accent: linear-gradient(135deg, #388e3c, #2a6b2f);
+
+  /* Valores Positivos e Negativos */
+  --positive-color: #81c784; /* Verde mais suave para valores positivos */
+  --negative-color: #ef5350; /* Vermelho mais suave para valores negativos */
+
+  /* Tabela */
+  --table-border: #1f4228;
+  --table-header-bg: #153721;
+  --table-row-hover-bg: #1c452a;
+  --table-header-text: #76c893;
+
+  /* Links */
+  --link-color: #76c893;
+  --link-hover-color: #4caf50;
+
+  /* Botões */
+  --button-bg: var(--gradient-primary);
+  --button-hover-bg: #2e7d32;
+  --button-text-color: #ffffff;
+
+  /* Inputs */
+  --input-bg: #1c452a;
+  --input-border: #388e3c;
+  --input-focus-border: #66bb6a;
+  --input-text-color: #d7f3df;
+
+  /* Bordas e sombras */
+  --border-radius: 8px;
+  --box-shadow: rgba(0, 100, 0, 0.6) 0px 4px 8px;
+  --box-shadow-hover: rgba(0, 100, 0, 0.8) 0px 6px 12px;
+
+  /* Transições */
+  --transition-duration: 0.3s;
+  --transition-timing: ease-in-out;
+}

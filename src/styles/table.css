@@ -7,22 +7,23 @@
   background-color: var(--background-color);
   border-radius: 12px;
   overflow: hidden;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
 }
 
 .crypto-table th,
 .crypto-table td {
-  padding: 14px 10px;
+  padding: 16px 12px;
   border: 1px solid var(--table-border);
   font-size: 1rem;
 }
 
 .crypto-table th {
   background: linear-gradient(135deg, var(--table-header-bg-start), var(--table-header-bg-end));
-  font-weight: 600;
+  font-weight: bold;
   text-transform: uppercase;
   color: var(--text-light);
-  letter-spacing: 0.8px;
+  letter-spacing: 1px;
   position: sticky;
   top: 0;
   z-index: 1;
@@ -34,36 +35,39 @@
 
 .crypto-table tbody tr:hover {
   background-color: var(--table-row-hover-bg);
-  transform: scale(1.01);
+  transform: scale(1.02);
 }
 
 .crypto-table .crypto-name {
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 12px;
   justify-content: flex-start;
 }
 
 .crypto-table .crypto-icon {
-  width: 40px;
-  height: 40px;
+  width: 42px;
+  height: 42px;
   border-radius: 50%;
   object-fit: cover;
-  transition: transform 0.2s ease;
+  transition: transform 0.3s ease, filter 0.3s ease;
 }
 
 .crypto-table .crypto-icon:hover {
-  transform: scale(1.3) rotate(15deg);
+  transform: scale(1.3) rotate(10deg);
+  filter: brightness(1.2);
 }
 
 .crypto-table .positive {
   color: var(--positive-color);
   font-weight: bold;
+  font-size: 1rem;
 }
 
 .crypto-table .negative {
   color: var(--negative-color);
   font-weight: bold;
+  font-size: 1rem;
 }
 
 .crypto-table tbody td {
@@ -76,13 +80,13 @@
   align-items: flex-end;
   justify-content: center;
   height: 40px;
-  gap: 3px;
+  gap: 4px;
 }
 
 .crypto-table .sparkline div {
-  width: 4px;
+  width: 5px;
   background-color: var(--sparkline-color);
-  border-radius: 2px;
+  border-radius: 3px;
   transition: height 0.3s ease, background-color 0.3s ease;
 }
 
@@ -93,7 +97,31 @@
 @media (max-width: 1024px) {
   .crypto-table th,
   .crypto-table td {
+    font-size: 0.9rem;
+    padding: 12px;
+  }
+
+  .crypto-table .crypto-icon {
+    width: 36px;
+    height: 36px;
+  }
+
+  .crypto-table .sparkline {
+    height: 30px;
+  }
+
+  .crypto-table .sparkline div {
+    width: 4px;
+  }
+}
+
+@media (max-width: 768px) {
+  .crypto-table {
     font-size: 0.85rem;
+  }
+
+  .crypto-table th,
+  .crypto-table td {
     padding: 10px;
   }
 
@@ -103,7 +131,7 @@
   }
 
   .crypto-table .sparkline {
-    height: 30px;
+    height: 25px;
   }
 
   .crypto-table .sparkline div {
@@ -111,7 +139,7 @@
   }
 }
 
-@media (max-width: 768px) {
+@media (max-width: 480px) {
   .crypto-table {
     font-size: 0.8rem;
   }
@@ -127,49 +155,10 @@
   }
 
   .crypto-table .sparkline {
-    height: 25px;
+    height: 20px;
   }
 
   .crypto-table .sparkline div {
     width: 2.5px;
   }
-}
-
-@media (max-width: 480px) {
-  .crypto-table {
-    font-size: 0.75rem;
-  }
-
-  .crypto-table th,
-  .crypto-table td {
-    padding: 6px;
-  }
-
-  .crypto-table .crypto-icon {
-    width: 24px;
-    height: 24px;
-  }
-
-  .crypto-table .sparkline {
-    height: 20px;
-  }
-
-  .crypto-table .sparkline div {
-    width: 2px;
-  }
-}
-
-/* Adicional: Efeitos interativos e tema */
-:root {
-  --background-color: #ffffff;
-  --text-color: #333333;
-  --text-light: #ffffff;
-  --table-border: #dddddd;
-  --table-header-bg-start: #4caf50;
-  --table-header-bg-end: #8bc34a;
-  --table-row-hover-bg: #f9f9f9;
-  --positive-color: #4caf50;
-  --negative-color: #f44336;
-  --sparkline-color: #007bff;
-  --accent-color: #ff9800;
 }
